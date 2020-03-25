@@ -78,4 +78,9 @@ describe('Error', () => {
     expect(result.message).toBe(null);
   });
 
+  test('No arguments passed', async () => {
+    const result = await getProcessingPage();
+    expect(result).toBe(undefined);
+  });
+
 });
