@@ -18,7 +18,7 @@ export async function getProcessingPage(statesArr) {
                 return 'Fake error result';
             case 'success':
                 console.log('success');
-                return 'Fake success result';
+                return { title: 'Order complete', message: null };
             default:
                 console.log('default');
         }

@@ -16,12 +16,12 @@ class App extends React.Component {
 
     let stateObj;
 
-    // stateObj = [{ state: 'processing' }, { state: 'success' }];
+    stateObj = [{ state: 'processing' }, { state: 'success' }];
     // stateObj = [{ state: 'processing' }, { state: 'error' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: 'NO_STOCK' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: 'INCORRECT_DETAILS' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: null }];
-    stateObj = [{ state: 'processing' }, { state: 'error', errorCode: undefined }];
+    // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: undefined }];
 
     const result = await getProcessingPage(stateObj);
     this.setState({ result: JSON.stringify(result) });
