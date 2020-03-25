@@ -1,4 +1,7 @@
 import { getProcessingPage } from './helpers/processingHelpers';
+import * as general from './helpers/general';
+
+general.delay = jest.fn(() => {});
 
 describe('Success', () => {
 
