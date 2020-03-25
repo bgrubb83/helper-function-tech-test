@@ -17,12 +17,12 @@ class App extends React.Component {
 
     let stateObj;
 
-    stateObj = [{ state: 'processing' }, { state: 'success' }];
+    // stateObj = [{ state: 'processing' }, { state: 'success' }];
     // stateObj = [{ state: 'processing' }, { state: 'error' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: 'NO_STOCK' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: 'INCORRECT_DETAILS' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: null }];
-    // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: undefined }];
+    stateObj = [{ state: 'processing' }, { state: 'error', errorCode: undefined }];
 
     this.setState({ argument: JSON.stringify(stateObj) });
 
@@ -31,7 +31,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('state', this.state);
+    // console.log('state', this.state);
     return (
       <div className="App">
         <p>Argument: {this.state.argument}</p>
