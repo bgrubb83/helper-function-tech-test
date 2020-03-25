@@ -11,18 +11,20 @@ class App extends React.Component {
     };
   }
 
-  async componentDidMount() {
-    /* Various states to be passed to the helper function */
-    /* Uncomment as neceesary to try all outcomes */
+  componentDidMount = async () => {
+    /*
+     * See below various states which can be passed to the helper function
+     * Uncomment them as neceesary to try all of the different outcomes
+     */
 
     let stateObj;
 
-    // stateObj = [{ state: 'processing' }, { state: 'success' }];
+    stateObj = [{ state: 'processing' }, { state: 'success' }];
     // stateObj = [{ state: 'processing' }, { state: 'error' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: 'NO_STOCK' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: 'INCORRECT_DETAILS' }];
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: null }];
-    stateObj = [{ state: 'processing' }, { state: 'error', errorCode: undefined }];
+    // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: undefined }];
 
     this.setState({ argument: JSON.stringify(stateObj) });
 
@@ -33,7 +35,7 @@ class App extends React.Component {
   render() {
     // console.log('state', this.state);
     return (
-      <div className="App">
+      <div>
         <p>Argument: {this.state.argument}</p>
         <p>Result: {this.state.result}</p>
       </div>

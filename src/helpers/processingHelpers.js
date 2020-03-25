@@ -1,43 +1,49 @@
+import { delay } from './general';
+import {
+    PROCESSING_STATES,
+    ERROR_CODES,
+    ERROR_MESSAGES,
+    TITLES,
+} from '../constants';
+
 /*
- * Gets the processing page
- * @param {array} data 
+ * Gets the error message
+ * @param {array} stateObj 
  */
 
-import { delay } from './general';
-
-function findErrorMessage({ errorCode }) {
-    console.log('ec', errorCode);
+const findErrorMessage = ({ errorCode }) => {
     switch (errorCode) {
-        case 'NO_STOCK':
-            return { title: 'Error page', message: 'No stock has been found' };
-        case 'INCORRECT_DETAILS':
-            return { title: 'Error page', message: 'Incorrect details have been entered' };
+        case ERROR_CODES.NO_STOCK:
+            return { title: TITLES.ERROR_PAGE, message: ERROR_MESSAGES.NO_STOCK };
+        case ERROR_CODES.INCORRECT_DETAILS:
+            return { title: TITLES.ERROR_PAGE, message: ERROR_MESSAGES.INCORRECT_DETAILS };
         case null:
         case undefined:
-            return { title: 'Error page', message: null };
+            return { title: TITLES.ERROR_PAGE, message: null };
         default:
-            return { title: 'Error page', message: null };
+            return { title: TITLES.ERROR_PAGE, message: null };
     }
 }
 
-export async function getProcessingPage(statesArr) {
-    console.log('helper called with', statesArr);
+/*
+ * Gets the processing page
+ * @param {array} statesArr 
+ */
+
+export const getProcessingPage = async (statesArr) => {
     if (statesArr) {
         for (const stateObj of statesArr) {
             if (stateObj.state) {
                 switch (stateObj.state) {
-                    case 'processing':
-                        console.log('processing');
+                    case PROCESSING_STATES.PROCESSING:
                         await delay(2000);
                         break;
-                    case 'error':
-                        console.log('error');
+                    case PROCESSING_STATES.ERROR:
                         return findErrorMessage(stateObj);
-                    case 'success':
-                        console.log('success');
-                        return { title: 'Order complete', message: null };
+                    case PROCESSING_STATES.SUCCESS:
+                        return { title: TITLES.SUCCESS, message: null };
                     default:
-                        console.log('default');
+                        return { title: TITLES.ERROR, message: null };
                 }
             }
         };
