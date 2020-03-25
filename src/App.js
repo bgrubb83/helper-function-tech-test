@@ -3,6 +3,12 @@ import './App.css';
 import { getProcessingPage } from './helpers/processingHelpers';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: 'Waiting...',
+    };
+  }
 
   async componentDidMount() {
     getProcessingPage('test');
@@ -11,7 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        Testing
+        <p>{this.state.result}</p>
       </div>
     );
   }
