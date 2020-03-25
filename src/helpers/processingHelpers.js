@@ -3,7 +3,24 @@
  * @param {array} data 
  */
 
-export function getProcessingPage(arg) {
-    console.log('called with', arg);
-    return 'Fake result';
+import { delay } from './general';
+
+export async function getProcessingPage(statesArr) {
+    console.log('helper called with', statesArr);
+    for (const stateObj of statesArr) {
+        switch (stateObj.state) {
+            case 'processing':
+                console.log('processing');
+                await delay(2000);
+                break;
+            case 'error':
+                console.log('error');
+                return 'Fake error result';
+            case 'success':
+                console.log('success');
+                return 'Fake success result';
+            default:
+                console.log('default');
+        }
+    };
 }

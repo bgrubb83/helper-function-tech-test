@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: 'Waiting...',
+      result: 'Processing...',
     };
   }
 
@@ -23,12 +23,12 @@ class App extends React.Component {
     // stateObj = [{ state: 'processing' }, { state: 'error', errorCode: null }];
     stateObj = [{ state: 'processing' }, { state: 'error', errorCode: undefined }];
 
-    const result = getProcessingPage(stateObj);
-    this.setState({ result });
+    const result = await getProcessingPage(stateObj);
+    this.setState({ result: JSON.stringify(result) });
   }
 
   render() {
-    console.log(this.state)
+    console.log('state', this.state);
     return (
       <div className="App">
         <p>{this.state.result}</p>
